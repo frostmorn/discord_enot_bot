@@ -50,10 +50,6 @@ async def file_tail(bot, config, sleep_time):
 
                     
                     # [line.find("]")+1:][line.find("]")+1:][line.find("[")+2:].replace(']', '')
-                   
-                elif "[GHOST] creating game" in line:
-                    await flood_channel.send(monospace_green(line))
-
-                await asyncio.sleep(sleep_time)
+            await asyncio.sleep(sleep_time)
 
         
