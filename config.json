@@ -1,0 +1,22 @@
+{
+    "map_message_time_exist": 120,
+    "command_triger"        :   ".",
+    "token"                 :   "NzMzMzA5MTcxMzUyNjAwNjM2.XxBRYg.aN37CukI7mOY_FYeu4R1bRrvABo",
+    "ghost_log"             :   "/home/fiona/fiona.log",
+    "map_config_path"       :   "/home/fiona/config/mapcfgs/",
+    "map_path"              :   "/home/fiona/maps/",
+    "loaded_replay_path"    :   "/home/fiona/loaded_replays",
+    "channels":{
+        "debug"             :   686315238848725033, 
+        "log"               :   686308210503974946,
+        "watchlist"         :   686656259293708309,
+        "bugs_and_replays"  :   684385555798425606,
+        "flood"             :   622051621358141499
+    },
+    "db":{
+        "user"              :   "fiona",
+        "password"          :   "suckmyass",
+        "host"              :   "localhost",
+        "database"          :   "fiona"
+    }
+}
