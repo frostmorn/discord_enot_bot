@@ -118,7 +118,7 @@ class Base(Cog):
             for mentioned_user in ctx.message.mentions:
                 try:
                     await mentioned_user.kick()
-                    await ctx.send("Ha-ha-ha, "+mentioned_user+" kicked.")
+                    await ctx.send("Ha-ha-ha, "+str(mentioned_user)+" kicked.")
                 except discord.Forbidden:
                     await ctx.send("<@!"+str(mentioned_user.id)+"> can't be kicked due to Missing Permissions error")
                 pass
