@@ -1,3 +1,4 @@
+import discord
 from discord.ext import commands
 from discord.ext.commands import Cog
 import keyw
@@ -107,3 +108,21 @@ class Base(Cog):
                 new_message = new_message +" "+part
         await ctx.message.delete()
         await ctx.send(new_message)
+
+    @commands.command()
+    async def kick(self, ctx, user):
+        """
+            Kills @username from
+        """
+        if ctx.author.id  == 566918071097360384 or ctx.author.id == 727528968504213507:        
+            for mentioned_user in ctx.message.mentions:
+                try:
+                    await mentioned_user.kick()
+                    await ctx.send("Ha-ha-ha, kicked")
+                except discord.Forbidden:
+                    await ctx.send("<@!"+str(mentioned_user.id)+"> can't be kicked due to Missing Permissions error")
+                pass
+
+        else:
+            await ctx.send("You r not authorized to perform that operation. GTFO")
+        pass
