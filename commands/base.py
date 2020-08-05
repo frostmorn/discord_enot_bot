@@ -112,13 +112,13 @@ class Base(Cog):
     @commands.command()
     async def kick(self, ctx, user):
         """
-            Kills @username from
+            Kicks @username from guild
         """
         if ctx.author.id  == 566918071097360384 or ctx.author.id == 727528968504213507:        
             for mentioned_user in ctx.message.mentions:
                 try:
                     await mentioned_user.kick()
-                    await ctx.send("Ha-ha-ha, kicked")
+                    await ctx.send("Ha-ha-ha, "+mentioned_user+" kicked.")
                 except discord.Forbidden:
                     await ctx.send("<@!"+str(mentioned_user.id)+"> can't be kicked due to Missing Permissions error")
                 pass
@@ -126,3 +126,21 @@ class Base(Cog):
         else:
             await ctx.send("You r not authorized to perform that operation. GTFO")
         pass
+    @commands.command()
+    async def ban(self, ctx, user):
+        """
+            Bans @username in guild
+        """
+        if ctx.author.id  == 566918071097360384 or ctx.author.id == 727528968504213507:        
+            for mentioned_user in ctx.message.mentions:
+                try:
+                    await mentioned_user.ban()
+                    await ctx.send("Ha-ha-ha, "+str(mentioned_user)+" banned.")
+                except discord.Forbidden:
+                    await ctx.send("<@!"+str(mentioned_user.id)+"> can't be banned due to Missing Permissions error")
+                pass
+
+        else:
+            await ctx.send("You r not authorized to perform that operation. GTFO")
+        pass
+
