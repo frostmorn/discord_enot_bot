@@ -131,7 +131,7 @@ class Base(Cog):
         """
             Bans @username in guild
         """
-        if ctx.author.id  == 566918071097360384 or ctx.author.id == 727528968504213507:        
+        if ctx.author.id  == 478639649435418628 or ctx.author.id == 727528968504213507:        
             for mentioned_user in ctx.message.mentions:
                 try:
                     await mentioned_user.ban()
