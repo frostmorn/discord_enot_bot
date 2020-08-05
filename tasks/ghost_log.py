@@ -18,7 +18,8 @@ async def file_tail(bot, config, sleep_time):
     try:
         file = open(filename, 'r', encoding='utf-8')
     except IOError:
-        sys.exit("FATAL ERROR: There was a problem opening \"{}\".".format(filename))
+        # sys.exit("FATAL ERROR: There was a problem opening \"{}\".".format(filename))
+        print("Error with opening ghost_log occured")
     
     file.seek(0, os.SEEK_END)
     print("------")
