@@ -20,7 +20,7 @@ class Reactions(Cog):
             Kiss user
         """ 
         for mentioned_user in ctx.message.mentions:
-            embed = Embed(title=str(ctx.message.author)+" kissed "+str(mentioned_user), colour=Colour(0xE5E242))
+            embed = Embed(title=str(ctx.message.author)+" kissed "+str(mentioned_user), colour=Colour(0x8CFE63))
             embed.set_image(url=random.choice(config["reactions"]["kiss"]))
             await ctx.send(embed=embed)
     @commands.command()
@@ -29,6 +29,6 @@ class Reactions(Cog):
             Slap user
         """ 
         for mentioned_user in ctx.message.mentions:
-            embed = Embed(title=str(ctx.message.author)+" slaps "+str(mentioned_user), colour=Colour(0xE5E242))
+            embed = Embed(title=str(ctx.message.author)+" slaps "+str(mentioned_user), colour=Colour(0x8CFE63))
             embed.set_image(url=random.choice(config["reactions"]["slap"]))
             await ctx.send(embed=embed)
