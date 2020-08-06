@@ -6,7 +6,7 @@ from commands import map as map_commands
 from commands import base as base_commands
 from commands import bot as bot_commands
 from commands import base
-
+from commands import reactions as reactions_commands
 from tasks import ghost_log
 from tasks import del_bot_shit
 from events.on_message.map_loader import map_download
@@ -26,7 +26,8 @@ bot.add_cog(map_commands.Maps(bot))
 bot.add_cog(base_commands.Base(bot))
 
 bot.add_cog(bot_commands.Bot(bot))
-
+bot.add_cog(reactions_commands.Reactions(bot))
+bot 
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, CommandNotFound):
