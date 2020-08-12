@@ -71,7 +71,7 @@ class Base(Cog):
         """
             Removes last `count` of messages from chat
         """
-        if ctx.author.id  == 566918071097360384 or ctx.author.id == 478639649435418628:
+        if ctx.author.id  == 727528968504213507 or ctx.author.id == 478639649435418628:
             messages = await ctx.history(limit=int(count)).flatten()
             for message in messages:
                 try:
