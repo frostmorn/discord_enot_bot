@@ -28,7 +28,7 @@ class Base(Cog):
             Last message convert from english to russian layout
         """
         translated_message =""
-        embed = Embed(title=str("Message Layout Translated(ru -> en from: ")+str(ctx.message.author.display_name)+")", colour=Colour(0x000000))
+        embed = Embed(title=str("Message Layout Translated(:flag_ru: :arrow_right: :flag_us: from: ")+str(ctx.message.author.display_name)+")", colour=Colour(0x000000))
         messages = await ctx.history(limit=2).flatten()
         message = messages[1]
         splitted_message = message.content.split(" ")
@@ -50,7 +50,7 @@ class Base(Cog):
             Last message convert from russian to english layout
         """
         translated_message =""
-        embed = Embed(title=str("Message Layout Translated(ru -> en from: ")+str(ctx.message.author.display_name)+")", colour=Colour(0x000000))
+        embed = Embed(title=str("Message Layout Translated(:flag_us: :arrow_right: :flag_ru: from: ")+str(ctx.message.author.display_name)+")", colour=Colour(0x000000))
         messages = await ctx.history(limit=2).flatten()
         message = messages[1]
         splitted_message = message.content.split(" ")
