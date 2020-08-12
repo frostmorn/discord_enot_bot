@@ -100,11 +100,11 @@ class Base(Cog):
             if not ("<" in part and ">" in part):
                 for character in part:
                     if character == "?":
-                        new_message = new_message + "   :question:"
+                        new_message = new_message + "  :question:"
                     elif character == "!":
-                        new_message = new_message + "   :exclamation:"
+                        new_message = new_message + "  :exclamation:"
                     elif character in "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM":
-                        new_message = new_message +"    :regional_indicator_"+character.lower()+":"
+                        new_message = new_message +"  :regional_indicator_"+character.lower()+":"
                     else:
                         new_message = new_message +"    "+character
                 new_message = new_message +"    "
