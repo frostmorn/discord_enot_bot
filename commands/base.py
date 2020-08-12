@@ -27,17 +27,19 @@ class Base(Cog):
         """
             Last message convert from english to russian layout
         """
+        translated_message =""
+        embed = Embed(title=str("Message Layout Translated(ru -> en from: ")+str(ctx.message.author.display_name)+")", colour=Colour(0x000000))
         messages = await ctx.history(limit=2).flatten()
         message = messages[1]
         splitted_message = message.content.split(" ")
-        translated_message = "message from <@!" + str(message.author.id) + "> translated from en to rus:\r\n"
         for part in splitted_message:
             if not ("<" in part and ">" in part):
                 translated_message = translated_message +" "+keyw.engrus(part)
             else:
                 translated_message = translated_message +" "+part
 
-        await ctx.send(translated_message)
+        embed.add_field(name="Message", value=translated_message)
+        await ctx.send(embed=embed)
         await ctx.message.delete()    
         if message.author.id == ctx.message.author.id:
             await message.delete()
@@ -47,16 +49,19 @@ class Base(Cog):
         """
             Last message convert from russian to english layout
         """
+        translated_message =""
+        embed = Embed(title=str("Message Layout Translated(ru -> en from: ")+str(ctx.message.author.display_name)+")", colour=Colour(0x000000))
         messages = await ctx.history(limit=2).flatten()
         message = messages[1]
         splitted_message = message.content.split(" ")
-        translated_message = "message from <@!" + str(message.author.id) + "> translated from rus to en:\r\n"
         for part in splitted_message:
             if not ("<" in part and ">" in part):
                 translated_message = translated_message +" "+keyw.ruseng(part)
             else:
                 translated_message = translated_message +" "+part
-        await ctx.send(translated_message)
+        
+        embed.add_field(name="Message", value=translated_message)
+        await ctx.send(embed=embed)
         await ctx.message.delete()    
         if message.author.id == ctx.message.author.id:
             await message.delete()
