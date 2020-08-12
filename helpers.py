@@ -89,5 +89,5 @@ def get_leaderboard():
     }
 
     response = requests.get('https://mee6.xyz/api/plugins/levels/leaderboard/598903919602696202', headers=headers)
-    exp_data = json.loads(response.content)
+    exp_data = json.loads(response.content.decode('utf-8'))
     return exp_data
