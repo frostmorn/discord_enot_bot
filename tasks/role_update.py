@@ -24,7 +24,6 @@ async def role_update(bot, config, sleep_time):
                         
                     if int(player["id"]) == member.id: 
                         if player['xp'] > 100:                              # TEST(743042483474268210)
-                            if not 
                             await member.add_roles(dget(guild.roles, id = 743042483474268210)) 
                             print(player)
                         if player['xp'] < 5000:                             # Пездюк(685921321082683525)
