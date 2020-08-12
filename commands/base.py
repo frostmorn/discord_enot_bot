@@ -185,5 +185,5 @@ class Base(Cog):
             roles = ""    
             for role in mention.roles:
                 roles = roles + role.name + "\r\n"
-            embed.add_field(name="Roles", value="``" + roles + "``")
+            embed.add_field(name="Roles", value=monospace_message(roles))
         await ctx.send(embed=embed)
