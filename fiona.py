@@ -9,7 +9,7 @@ from commands import base
 from commands import reactions as reactions_commands
 from tasks import ghost_log
 from tasks import del_bot_shit
-# from tasks import leaderboard_update
+from tasks import role_update
 from events.on_message.map_loader import map_download
 from helpers import calc_sha
 import os 
@@ -46,7 +46,7 @@ async def on_message(message):
 
 bot.loop.create_task(ghost_log.file_tail(bot, config, 1))
 # bot.loop.create_task(del_bot_shit.del_bot_shit(bot, config, 1))
-# bot.loop.create_task(leaderboard_update.handle_leaderboard(bot, config, 1))
+bot.loop.create_task(role_update.role_update(bot, config, 1))
 
 # run bot
 bot.run(config["token"])
