@@ -41,3 +41,5 @@ async def del_bot_shit(bot, config, sleep_time):
         # guild =  bot.get_guild(598903919602696202)
         # member =  guild.get_member(627554926314258433)
         # await member.edit(nick="НУП")
+
+        

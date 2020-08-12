@@ -1,3 +1,4 @@
+import json
 import w3g
 import requests
 import hashlib
@@ -72,3 +73,21 @@ def calc_sha(filename):
             fb = f.read(1024) # Read the next block from the file
         f.close()
         return file_hash.hexdigest()
+def get_leaderboard():
+    headers = {
+        'authority': 'mee6.xyz',
+        'accept': 'application/json',
+        'x-fingerprint': '742980895044280320.7WHPgTg-JWtDc2dr4FEwl6rV2aw',
+        'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36',
+        'authorization': 'YTE4YjNiZTAzODAwMDAz.NWYzMzgwZTY=.71n0AXc2F-OBiEvVE9damnepNhc',
+        'sec-fetch-site': 'same-origin',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        'referer': 'https://mee6.xyz/leaderboard/598903919602696202',
+        'accept-language': 'en-GB,en;q=0.9,ru-UA;q=0.8,ru;q=0.7,uk-UA;q=0.6,uk;q=0.5,en-US;q=0.4',
+        'cookie': '__cfduid=d560f24d29c6159686715f22ab7f7e9bc1597210843; session=eyJzdGF0ZSI6IjQ2R0NVc2lQazVFNzJrSDlwbHRNWGZIVEMxd25WYyJ9.XzOA4w.A6Wj9OWsMTz1Vn2n3WzgwnxxLu4; crisp-client%2Fsession%2F12794dee-08f5-4047-ac85-6ea6b8af6005=session_d54f9e52-1a0a-4961-bd47-1754837a9ff2',
+    }
+
+    response = requests.get('https://mee6.xyz/api/plugins/levels/leaderboard/598903919602696202', headers=headers)
+    exp_data = json.loads(response.content)
+    return exp_data

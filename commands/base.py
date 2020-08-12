@@ -1,3 +1,5 @@
+from discord import Embed
+from discord.utils import get
 import discord
 from discord.ext import commands
 from discord.ext.commands import Cog
@@ -144,3 +146,43 @@ class Base(Cog):
             await ctx.send("You r not authorized to perform that operation. GTFO")
         pass
 
+
+    @commands.command()
+    async def up(self, ctx, line):
+        """
+            Lvlups user
+        """ 
+        message = ""
+        
+        for mentioned_user in ctx.message.mentions:
+            for role in mentioned_user.roles:
+                if role.id in config["roles_by_lvl"]:
+                    message = message + role.name + "\r\n"
+                                    
+                    role_id = config["roles_by_lvl"][config["roles_by_lvl"].index(role.id)+1]
+                    role = get(ctx.guild.roles, id=role_id)
+                try:
+                    try:
+                        await mentioned_user.add_roles(role_id, "Cause "+ctx.message.author.name+" wanted that.")
+                        await ctx.send(monospace_message(message))
+                    except discord.NotFound:
+                        await ctx.send("Unknown role I want to gave, but way I want I haven't made.")
+                except discord.Forbidden:
+                    await ctx.send("<@!"+str(mentioned_user.id)+"> can't be lvl upped due to Missing Permissions error")
+
+                
+        await ctx.send(monospace_message(message))
+
+    @commands.command()
+    async def gr(self, ctx, line):
+        """
+            Get roles for all users in mentions
+        """ 
+        message = ""
+        for mentioned_user in ctx.message.mentions:
+            message = message + "User " +mentioned_user.display_name + " have such roles:\r\n"
+            
+            for role in mentioned_user.roles:
+                message = message + role.name + "\r\n"
+        
+        await ctx.send(monospace_message(message))
