@@ -88,7 +88,7 @@ class Base(Cog):
         """
             Converts text to emoji's
         """
-        message = message.lstrip(" ").rstrip(" ")
+        message = ctx.message.content[ctx.message.content.find(message):].lstrip(" ").rstrip(" ")
         new_message = "message from <@!" + str(ctx.message.author.id) + "> translated to emoji's:\r\n"
         splitted_message = message.split(" ")
         for part in splitted_message:
@@ -96,19 +96,20 @@ class Base(Cog):
             #     translated_message = translated_message +" "+keyw.ruseng(part)
             # else:
             #     translated_message = translated_message +" "+part
+            part= part.rstrip().lstrip()
             if not ("<" in part and ">" in part):
                 for character in part:
                     if character == "?":
-                        new_message = new_message + " :question: "
+                        new_message = new_message + "   :question:"
                     elif character == "!":
-                        new_message = new_message + " :exclamation: "
+                        new_message = new_message + "   :exclamation:"
                     elif character in "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM":
-                        new_message = new_message +" :regional_indicator_"+character.lower()+": "
+                        new_message = new_message +"    :regional_indicator_"+character.lower()+":"
                     else:
-                        new_message = new_message + character
-                new_message = new_message +"` `"
+                        new_message = new_message +"    "+character
+                new_message = new_message +"    "
             else:
-                new_message = new_message +" "+part
+                new_message = new_message +"    "+part
         await ctx.message.delete()
         await ctx.send(new_message)
 
