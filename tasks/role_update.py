@@ -39,10 +39,10 @@ async def role_update(bot, config, sleep_time):
                             await member.add_roles(dget(guild.roles, id = 743042483474268210)) 
 
 
-            asyncio.sleep(60)
+            await asyncio.sleep(60)
             pass
         except:
-            asyncio.sleep(180)
+            await asyncio.sleep(180)
         # user = bot.get_user(627554926314258433)
         # # user.edit(nick = "Профан Alaster")
         # nickname = "Профан Alaster"
