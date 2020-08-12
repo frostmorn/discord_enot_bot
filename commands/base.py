@@ -1,3 +1,4 @@
+from discord import Colour
 from discord import Embed
 from discord.utils import get
 import discord
@@ -178,11 +179,12 @@ class Base(Cog):
         """
             Get roles for all users in mentions
         """ 
-        message = ""
-        for mentioned_user in ctx.message.mentions:
-            message = message + "User " +mentioned_user.display_name + " have such roles:\r\n"
-            
-            for role in mentioned_user.roles:
-                message = message + role.name + "\r\n"
         
-        await ctx.send(monospace_message(message))
+        for mention in ctx.message.mentions:
+            message = message + "User " +mention.display_name + " have such roles:\r\n"
+            embed = Embed(title=str("User ")+str(mention.display_name), colour=Colour(0x000000))
+            roles = ""    
+            for role in mention.roles:
+                roles = message + role.name + "\r\n"
+            embed.add_field(name="Roles", value=roles)
+        await ctx.send(embed=embed)
