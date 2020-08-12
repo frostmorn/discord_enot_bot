@@ -23,20 +23,21 @@ async def role_update(bot, config, sleep_time):
                 for player in players:
                         
                     if int(player["id"]) == member.id: 
-                        if player['xp'] > 100:                              # TEST(743042483474268210)
-                            await member.add_roles(dget(guild.roles, id = 743042483474268210)) 
-                            print(player)
-                        if player['xp'] < 5000:                             # Пездюк(685921321082683525)
+                        if player['xp']> 15000 and player['xp']<20000:  # Рыцарь-Джедай (658687217694146590)
+                            await member.add_roles(dget(guild.roles, id = 658687217694146590)) 
+                            break
+                        elif player['xp'] > 10000 and player['xp'] < 15000:  # Падаван(668752138998120448)
+                            await member.add_roles(dget(guild.roles, id = 668752138998120448)) 
+                            break
+                        elif player['xp'] > 5000 and player['xp']<10000:   # Юнлинг(598907144607367199)
+                            await member.add_roles(dget(guild.roles, id = 598907144607367199)) 
+                            break
+                        elif player['xp'] < 5000:                             # Пездюк(685921321082683525)
                             await member.add_roles(dget(guild.roles, id = 685921321082683525)) 
-                            pass
-                        elif player['xp']> 5000 and player['xp']<10000:   # Юнлинг(598907144607367199)
-                            await member.add_roles(dget(guild.roles, id =598907144607367199)) 
-                            pass
-                        elif player['xp']> 10000 and player['xp']<15000:  # Падаван(668752138998120448)
-                            await member.add_roles(dget(guild.roles, id =668752138998120448)) 
-                            pass
-                        elif player['xp']> 15000 and player['xp']<20000:  # Рыцарь-Джедай (658687217694146590)
-                            await member.add_roles(dget(guild.roles, id =658687217694146590)) 
+                            break
+                        elif player['xp'] > 100:                              # TEST(743042483474268210)
+                            await member.add_roles(dget(guild.roles, id = 743042483474268210)) 
+
 
             asyncio.sleep(60)
             pass
