@@ -92,9 +92,17 @@ class Base(Cog):
 
         embed = Embed(title=str("Message Translated(from: ")+str(ctx.message.author.display_name)+")", colour=Colour(0x000000))
         new_message= ""
+        skip = 0
         for character in message:
             if  ("<" == character or character == ">"):
                 continue
+            if skip ==1:
+                if character!=" ":
+                    new_message = new_message + character
+                    continue
+                else:
+
+                    skip = 0
             if character == "?":
                 new_message = new_message + ":question:"
             elif character == "!":
@@ -102,9 +110,10 @@ class Base(Cog):
             elif character in "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM":
                 new_message = new_message + ":regional_indicator_"+character.lower()+":"
             elif character == " ":
-                new_message = new_message + ":orange_square:"
+                new_message = new_message + "<:space:743148798926258187>"
             elif character == "@":
                 new_message = new_message + " @"
+                skip =1
             elif character == "0":
                 new_message = new_message + ":zero:"
             elif character == "1":
