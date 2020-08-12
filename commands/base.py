@@ -185,6 +185,6 @@ class Base(Cog):
             embed = Embed(title=str("User ")+str(mention.display_name), colour=Colour(0x000000))
             roles = ""    
             for role in mention.roles:
-                roles = message + role.name + "\r\n"
+                roles = roles + role.name + "\r\n"
             embed.add_field(name="Roles", value=roles)
         await ctx.send(embed=embed)
