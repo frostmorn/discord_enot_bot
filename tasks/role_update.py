@@ -39,10 +39,10 @@ async def role_update(bot, config, sleep_time):
                         elif player['xp']> 15000 and player['xp']<20000:  # Рыцарь-Джедай (658687217694146590)
                             await member.add_roles(dget(guild.roles, id =658687217694146590)) 
 
-            await asyncio.sleep(60)
+            asyncio.sleep(60)
             pass
         except:
-            await asyncio.sleep(180)
+            asyncio.sleep(180)
         # user = bot.get_user(627554926314258433)
         # # user.edit(nick = "Профан Alaster")
         # nickname = "Профан Alaster"
