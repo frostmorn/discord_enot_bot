@@ -88,30 +88,52 @@ class Base(Cog):
         """
             Converts text to emoji's
         """
-        message = ctx.message.content[ctx.message.content.find(message):].lstrip(" ").rstrip(" ")
-        new_message = "message from <@!" + str(ctx.message.author.id) + "> translated to emoji's:\r\n"
-        splitted_message = message.split(" ")
-        for part in splitted_message:
-            # if not ("<" in part and ">" in part):
-            #     translated_message = translated_message +" "+keyw.ruseng(part)
-            # else:
-            #     translated_message = translated_message +" "+part
-            part= part.rstrip().lstrip()
-            if not ("<" in part and ">" in part):
-                for character in part:
-                    if character == "?":
-                        new_message = new_message + "  :question:"
-                    elif character == "!":
-                        new_message = new_message + "  :exclamation:"
-                    elif character in "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM":
-                        new_message = new_message +"  :regional_indicator_"+character.lower()+":"
-                    else:
-                        new_message = new_message +"    "+character
-                new_message = new_message +"    "
+        message = ctx.message.clean_content[ctx.message.content.find(message):]
+
+        embed = Embed(title=str("Message Translated(from: ")+str(ctx.message.author.display_name)+")", colour=Colour(0x000000))
+        new_message= ""
+        for character in message:
+            if  ("<" == character or character == ">"):
+                continue
+            if character == "?":
+                new_message = new_message + ":question:"
+            elif character == "!":
+                new_message = new_message + ":exclamation:"
+            elif character in "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM":
+                new_message = new_message + ":regional_indicator_"+character.lower()+":"
+            elif character == " ":
+                new_message = new_message + ":orange_square:"
+            elif character == "@":
+                new_message = new_message + " @"
+            elif character == "0":
+                new_message = new_message + ":zero:"
+            elif character == "1":
+                new_message = new_message + ":one:"
+            elif character == "2":
+                new_message = new_message + ":two:"
+            elif character == "3":
+                new_message = new_message + ":three:"
+            elif character == "4":
+                new_message = new_message + ":four:"
+            elif character == "5":
+                new_message = new_message + ":five:"
+            elif character == "6":
+                new_message = new_message + ":six:"
+            elif character == "7":
+                new_message = new_message + ":seven:"
+            elif character == "8":
+                new_message = new_message + ":eight:"
+            elif character == "9":
+                new_message = new_message + ":nine:"
             else:
-                new_message = new_message +"    "+part
+                new_message = new_message + ""+character
+                
+                new_message = new_message +""
         await ctx.message.delete()
-        await ctx.send(new_message)
+
+        embed.add_field(name="Message", value=new_message)
+        await ctx.send(embed=embed)
+
 
     @commands.command()
     async def kick(self, ctx, user):
