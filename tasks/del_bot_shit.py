@@ -27,9 +27,7 @@ async def del_bot_shit(bot, config, sleep_time):
                                 await message.delete()
                             if message.content[:1] == "-":
                                 await message.delete()
-                            if message.author.id == 665020813128368149 and "creating game " in message.content:
-                                if (now - message.created_at).total_seconds() > 120:
-                                    await message.delete()
+                                
             await asyncio.sleep(10)
         except:
             pass
