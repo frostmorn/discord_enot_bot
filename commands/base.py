@@ -181,7 +181,6 @@ class Base(Cog):
         """ 
         
         for mention in ctx.message.mentions:
-            message = message + "User " +mention.display_name + " have such roles:\r\n"
             embed = Embed(title=str("User ")+str(mention.display_name), colour=Colour(0x000000))
             roles = ""    
             for role in mention.roles:
