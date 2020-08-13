@@ -38,7 +38,7 @@ class Bot(Cog):
                 if int(player["id"]) == mention.id:
 
                     embed = Embed(title=str("Rank data for user ")+str(mention.display_name), colour=Colour(0x8CFE63))
-                    embed.add_field(name="Rank", value=player["level"])
+                    embed.add_field(name="Level", value=player["level"])
                     embed.add_field(name="Messages", value=player["message_count"])
                     embed.add_field(name="EXP", value=player["xp"])
                     set_exit = 1
