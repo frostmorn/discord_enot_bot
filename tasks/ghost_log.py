@@ -57,7 +57,6 @@ async def file_tail(bot, config, sleep_time):
     filename = config["ghost_log"]
 
     await bot.wait_until_ready()
-    await bot.change_presence(activity=discord.Game(name='Warcraft III'))
     flood_channel = bot.get_channel(config["channels"]["flood"])
     log_channel = bot.get_channel(config["channels"]["log"])
     bugs_and_replays_channel = bot.get_channel(config["channels"]["bugs_and_replays"])
@@ -85,7 +84,7 @@ async def file_tail(bot, config, sleep_time):
                 # replay_file = line
                 
                 if "Online Players > Lobby" in line:
-                    await bot.change_presence(activity=discord.Game(name=line[line.find("]")+1:].strip()))
+                    await bot.change_presence(status =line[line.find(">")+1:], activity=discord.Game( name=line[+1:len(line)-line.find("Online Players")].strip()))
             
                 if 'saving data to file' in line:
                     print("Replay file created")
