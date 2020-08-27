@@ -1,10 +1,10 @@
+import discord
 from discord.utils import get
 import asyncio
 import datetime
 
 async def del_bot_shit(bot, config, sleep_time):
     await bot.wait_until_ready()
-    
     while 1:
         try:
             now = datetime.datetime.utcnow() 

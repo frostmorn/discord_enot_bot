@@ -1,3 +1,4 @@
+
 from helpers import monospace_message as monospace 
 from helpers import monospace_solarized_cyan_message as monospace_cyan
 from helpers import monospace_solarized_yellow_message as monospace_yellow
@@ -56,6 +57,7 @@ async def file_tail(bot, config, sleep_time):
     filename = config["ghost_log"]
 
     await bot.wait_until_ready()
+    await bot.change_presence(activity=discord.Game(name='Warcraft III'))
     flood_channel = bot.get_channel(config["channels"]["flood"])
     log_channel = bot.get_channel(config["channels"]["log"])
     bugs_and_replays_channel = bot.get_channel(config["channels"]["bugs_and_replays"])
