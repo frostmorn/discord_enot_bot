@@ -84,7 +84,7 @@ async def file_tail(bot, config, sleep_time):
                 # replay_file = line
                 
                 if "Online Players > Lobby" in line:
-                    await bot.change_presence(activity=discord.Game( name=line[line.find(">")+1:].strip()))
+                    await bot.change_presence(status = line[line.find(">")+1:].strip())
             
                 if 'saving data to file' in line:
                     print("Replay file created")
