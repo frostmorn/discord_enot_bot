@@ -84,7 +84,7 @@ async def file_tail(bot, config, sleep_time):
                 #     await log_channel.send(monospace(line))
                 # replay_file = line
                 if "In games:" in line:
-                    print line.split("]")
+                    print(line.split("]"))
                     await bot.change_presence(activity=discord.Game(name=line ))
             
                 if 'saving data to file' in line:
