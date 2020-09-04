@@ -100,7 +100,7 @@ async def file_tail(bot, config, sleep_time):
                     for apm_element in apm_data:
                         embed.add_field(name=apm_element["player"], value=apm_data["apm"])
                         
-                    await bugs_and_replays_channel.send(embed)
+                    await bugs_and_replays_channel.send(embed=embed)
                     # TGHISDASD ASD TODO: MAKE THAT WORK
                     # await bugs_and_replays_channel.send(get_apm_message(replay_file), file=discord.File(filename=replay_file, "Replay.w3g"))
 

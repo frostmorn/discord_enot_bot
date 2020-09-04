@@ -125,4 +125,4 @@ def get_leaderboard():
     return exp_data
 
 if __name__ == "__main__":
-    get_apm_data("1599169865_130_LIFE IN ARENA 2.7r _405.w3g")
+    print(get_apm_data("GHost_2020-08-31_07-56__Life_In_Arena_-vc4__l_09m05s.w3g"))
