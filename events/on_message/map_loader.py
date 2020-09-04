@@ -7,7 +7,7 @@ from helpers import monospace_solarized_yellow_message as monospace_yellow
 from helpers import monospace_solarized_green_message as monospace_green
 from helpers import monospace_solarized_red_message as monospace_red
 from helpers import download_file
-from helpers import get_apm_message
+from helpers import get_apm_data
 import os
 from helpers import calc_sha
 from helpers import download_file
