@@ -98,7 +98,7 @@ async def file_tail(bot, config, sleep_time):
                     embed = discord.Embed(title="Players APM:  "+replay_file, colour=discord.Colour(0x000000))
                     apm_data = get_apm_data(replay_file)
                     for apm_element in apm_data:
-                        embed.add_field(name=apm_element["player"], value=apm_data["apm"])
+                        embed.add_field(name=apm_element.player, value=apm_data.apm)
                         
                     await bugs_and_replays_channel.send(embed=embed)
                     # TGHISDASD ASD TODO: MAKE THAT WORK
