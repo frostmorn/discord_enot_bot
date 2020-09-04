@@ -36,14 +36,46 @@ async def download_file(url,  filename):
         f.close()
 
 def get_apm_message(replay_file):
+    map_data_file = open("map_data.txt")
+    map_data = json.loads(map_data_file.read())
+
     w3g_object = w3g.File(replay_file)
     bug_timecodes = []
     acts = {p.id: 0 for p in w3g_object.players}
     chats = []
+    
     for e in w3g_object.events:
+    
+        event = str(e)
+        for key in map_data.keys():
+            if key in event:
+                try:
+                    event = event.replace(key, map_data[key]["Level 1 - Text - Name"])
+                except:
+                    event = event.replace(key, map_data[key]["Text - Name"])
+        shit = ["PreSubselect","AbilityPositionObject","ScenarioTrigger", "AssignGroupHotkey", "ChangeSelection", "MapTriggerChatCommand", "HeroSkillSubmenu"]
+        skip = 0
+        for shitness in shit:
+            if shitness in event:
+                skip = 1
+        if not skip:
+            print(event.replace("b'","").replace("'", ""))
         if e.apm:
             acts[e.player_id] += 1
-        if isinstance(e, w3g.Chat):
+                        # for player in w3g_object.players:
+                        #     if player.id == e.player_id and e.apm:
+
+                        #         if hasattr(e, "loc"):
+                        #             print("[",e.strtime(),"]",player.name, "used an ability", ability_data[e.ability.decode()]["Text - Name"], "at location",e.loc)
+                        #         else:
+                        #             print("[",e.strtime(),"]",player.name, "used an ability", ability_data[e.ability.decode()]["Text - Name"])
+                    
+        # if isinstance(e,w3g.Ability):
+        #     if hasattr(e, "loc"):
+        #         # print(e)
+        #         print( e.loc[0], ";",e.loc[1],";")
+        # if isinstance(e, w3g.Chat):
+        #     print(e)
             if "!bug" in str(e):
                 chats.append(e) 
                 if "00.000" not in e.strtime():
@@ -91,3 +123,6 @@ def get_leaderboard():
     response = requests.get('https://mee6.xyz/api/plugins/levels/leaderboard/598903919602696202', headers=headers)
     exp_data = json.loads(response.content.decode('utf-8'))
     return exp_data
+
+if __name__ == "__main__":
+    get_apm_message("1599169865_130_LIFE IN ARENA 2.7r _405.w3g")
