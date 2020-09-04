@@ -4,7 +4,7 @@ from helpers import monospace_solarized_cyan_message as monospace_cyan
 from helpers import monospace_solarized_yellow_message as monospace_yellow
 from helpers import monospace_solarized_green_message as monospace_green
 from helpers import monospace_solarized_red_message as monospace_red
-from helpers import get_apm_message
+from helpers import get_apm_data
 import sys
 import os
 import asyncio
@@ -94,7 +94,13 @@ async def file_tail(bot, config, sleep_time):
 
                     await bugs_and_replays_channel.send(file=discord.File(replay_file))
                     # replay_file = 
-                    await bugs_and_replays_channel.send(get_apm_message(replay_file))
+
+                    embed = discord.Embed(title="Players APM:  "+replay_file, colour=discord.Colour(0x000000))
+                    apm_data = get_apm_data(replay_file)
+                    for apm_element in apm_data:
+                        embed.add_field(name=apm_element["player"], value=apm_data["apm"])
+                        
+                    await bugs_and_replays_channel.send(embed)
                     # TGHISDASD ASD TODO: MAKE THAT WORK
                     # await bugs_and_replays_channel.send(get_apm_message(replay_file), file=discord.File(filename=replay_file, "Replay.w3g"))
 
