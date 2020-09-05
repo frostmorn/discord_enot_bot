@@ -98,7 +98,7 @@ async def file_tail(bot, config, sleep_time):
                     apm_data = get_apm_data(replay_file)
                     print(apm_data)
                     for apm_element in apm_data:
-                        embed.add_field(name=apm_element["player"], value=str(apm_daapm_element["apm"]))
+                        embed.add_field(name=apm_element["player"], value=str(apm_element["apm"]))
                         
                     await bugs_and_replays_channel.send(embed=embed)
                     # TGHISDASD ASD TODO: MAKE THAT WORK
