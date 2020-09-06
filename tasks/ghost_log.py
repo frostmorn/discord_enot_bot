@@ -94,13 +94,13 @@ async def file_tail(bot, config, sleep_time):
                     await bugs_and_replays_channel.send(file=discord.File(replay_file))
                     # replay_file = 
 
-                    embed = discord.Embed(title="Players APM:  "+replay_file, colour=discord.Colour(0x000000))
-                    apm_data = get_apm_data(replay_file)
-                    print(apm_data)
-                    for apm_element in apm_data:
-                        embed.add_field(name=apm_element["player"], value=str(apm_element["apm"]))
+                    # embed = discord.Embed(title="Players APM:  "+replay_file, colour=discord.Colour(0x000000))
+                    # apm_data = get_apm_data(replay_file)
+                    # print(apm_data)
+                    # for apm_element in apm_data:
+                    #     embed.add_field(name=apm_element["player"], value=str(apm_element["apm"]))
                         
-                    await bugs_and_replays_channel.send(embed=embed)
+                    # await bugs_and_replays_channel.send(embed=embed)
                     # TGHISDASD ASD TODO: MAKE THAT WORK
                     # await bugs_and_replays_channel.send(get_apm_message(replay_file), file=discord.File(filename=replay_file, "Replay.w3g"))
 
