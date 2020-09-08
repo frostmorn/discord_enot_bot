@@ -90,8 +90,8 @@ async def file_tail(bot, config, sleep_time):
                 if 'saving data to file' in line:
                     print("Replay file created")
                     replay_file = line.split("[")[3].replace("]", "").replace("\n", "").replace("\r", "")
-
-                    await bugs_and_replays_channel.send(file=discord.File(replay_file))
+                    try:
+                        await bugs_and_replays_channel.send(file=discord.File(replay_file))
                     # replay_file = 
 
                     # embed = discord.Embed(title="Players APM:  "+replay_file, colour=discord.Colour(0x000000))
@@ -104,7 +104,8 @@ async def file_tail(bot, config, sleep_time):
                     # TGHISDASD ASD TODO: MAKE THAT WORK
                     # await bugs_and_replays_channel.send(get_apm_message(replay_file), file=discord.File(filename=replay_file, "Replay.w3g"))
 
-                    
+                    except:
+                        asyncio.sleep(10)
                     # [line.find("]")+1:][line.find("]")+1:][line.find("[")+2:].replace(']', '')
             await asyncio.sleep(sleep_time)
 
