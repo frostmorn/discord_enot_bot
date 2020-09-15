@@ -82,30 +82,29 @@ async def file_tail(bot, config, sleep_time):
                 # if not "Watched user" in line:
                 #     await log_channel.send(monospace(line))
                 # replay_file = line
+                try:
+                    if "Online Players > " in line:
+
+                        await bot.change_presence(activity= discord.Game(name = "WC3 "+line[line.find(">")+1:].strip()+" players"))
                 
-                if "Online Players > " in line:
-
-                    await bot.change_presence(activity= discord.Game(name = "WC3 "+line[line.find(">")+1:].strip()+" players"))
-            
-                if 'saving data to file' in line:
-                    print("Replay file created")
-                    replay_file = line.split("[")[3].replace("]", "").replace("\n", "").replace("\r", "")
-                    try:
+                    if 'saving data to file' in line:
+                        print("Replay file created")
+                        replay_file = line.split("[")[3].replace("]", "").replace("\n", "").replace("\r", "")
                         await bugs_and_replays_channel.send(file=discord.File(replay_file))
-                    # replay_file = 
+                        # replay_file = 
 
-                    # embed = discord.Embed(title="Players APM:  "+replay_file, colour=discord.Colour(0x000000))
-                    # apm_data = get_apm_data(replay_file)
-                    # print(apm_data)
-                    # for apm_element in apm_data:
-                    #     embed.add_field(name=apm_element["player"], value=str(apm_element["apm"]))
-                        
-                    # await bugs_and_replays_channel.send(embed=embed)
-                    # TGHISDASD ASD TODO: MAKE THAT WORK
-                    # await bugs_and_replays_channel.send(get_apm_message(replay_file), file=discord.File(filename=replay_file, "Replay.w3g"))
+                        # embed = discord.Embed(title="Players APM:  "+replay_file, colour=discord.Colour(0x000000))
+                        # apm_data = get_apm_data(replay_file)
+                        # print(apm_data)
+                        # for apm_element in apm_data:
+                        #     embed.add_field(name=apm_element["player"], value=str(apm_element["apm"]))
+                            
+                        # await bugs_and_replays_channel.send(embed=embed)
+                        # TGHISDASD ASD TODO: MAKE THAT WORK
+                        # await bugs_and_replays_channel.send(get_apm_message(replay_file), file=discord.File(filename=replay_file, "Replay.w3g"))
 
-                    except:
-                        asyncio.sleep(10)
+                except:
+                    asyncio.sleep(10)
                     # [line.find("]")+1:][line.find("]")+1:][line.find("[")+2:].replace(']', '')
             await asyncio.sleep(sleep_time)
 
