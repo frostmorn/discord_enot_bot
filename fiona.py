@@ -45,7 +45,7 @@ async def on_message(message):
 
 
 bot.loop.create_task(ghost_log.file_tail(bot, config, 1))
-# bot.loop.create_task(del_bot_shit.del_bot_shit(bot, config, 1))
+bot.loop.create_task(del_bot_shit.del_bot_shit(bot, config, 1))
 bot.loop.create_task(role_update.role_update(bot, config, 1))
 
 # run bot
