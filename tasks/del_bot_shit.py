@@ -7,7 +7,7 @@ import datetime
 async def del_bot_shit(bot, config, sleep_time):
     await bot.wait_until_ready()
     while 1:
-
+        try:
             now = datetime.datetime.utcnow() 
             for guild in bot.guilds:
                 for channel in guild.text_channels:
@@ -28,15 +28,19 @@ async def del_bot_shit(bot, config, sleep_time):
                                 await message.delete()
                             if message.content[:1] == "-":
                                 await message.delete()
-            user = bot.get_user(524429275919810561)
-            await user.edit(nick = random.choice(["Говно", "залупа", "пенис", "хер", "давалка", "хуй", "блядина"
+            user = bot.get_user(524429275919810561)         
+            # user.edit(nick = )
+            user.display_name = random.choice(["Говно", "залупа", "пенис", "хер", "давалка", "хуй", "блядина"
             "Головка", "шлюха", "жопа", "член", "еблан", "петух" "мудила",
             "Рукоблуд", "ссанина", "очко", "блядун", "вагина",
             "Сука", "ебланище", "влагалище", "пердун", "дрочила",
             "Пидор", "пизда", "туз", "малафья",
             "Гомик", "мудила", "пилотка", "манда",
             "Анус", "вагина", "путана", "педрила",
-            "Шалава", "хуила", "мошонка", "елда"]))
+            "Шалава", "хуила", "мошонка", "елда"])
                                 
             await asyncio.sleep(10)
-       
+        except:
+            pass
+
+
