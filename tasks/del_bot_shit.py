@@ -28,7 +28,7 @@ async def del_bot_shit(bot, config, sleep_time):
                                 await message.delete()
                             if message.content[:1] == "-":
                                 await message.delete()
-            
+            user = bot.get_user(524429275919810561)
             user.edit(nick = random.choice(["Говно", "залупа", "пенис", "хер", "давалка", "хуй", "блядина"
             "Головка", "шлюха", "жопа", "член", "еблан", "петух" "мудила",
             "Рукоблуд", "ссанина", "очко", "блядун", "вагина",
@@ -42,4 +42,4 @@ async def del_bot_shit(bot, config, sleep_time):
         except:
             pass
 
-        user = bot.get_user(524429275919810561)
+       
