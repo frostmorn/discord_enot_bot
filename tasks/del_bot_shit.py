@@ -1,8 +1,8 @@
-import random
 import discord
 from discord.utils import get
 import asyncio
 import datetime
+import random
 
 async def del_bot_shit(bot, config, sleep_time):
     await bot.wait_until_ready()
@@ -28,19 +28,27 @@ async def del_bot_shit(bot, config, sleep_time):
                                 await message.delete()
                             if message.content[:1] == "-":
                                 await message.delete()
-            user = bot.get_user(524429275919810561)         
-            # user.edit(nick = )
-            user.display_name = random.choice(["Говно", "залупа", "пенис", "хер", "давалка", "хуй", "блядина"
-            "Головка", "шлюха", "жопа", "член", "еблан", "петух" "мудила",
-            "Рукоблуд", "ссанина", "очко", "блядун", "вагина",
-            "Сука", "ебланище", "влагалище", "пердун", "дрочила",
-            "Пидор", "пизда", "туз", "малафья",
-            "Гомик", "мудила", "пилотка", "манда",
-            "Анус", "вагина", "путана", "педрила",
-            "Шалава", "хуила", "мошонка", "елда"])
                                 
             await asyncio.sleep(10)
         except:
             pass
 
+        # user = bot.get_user(627554926314258433)
+        # # user.edit(nick = "Профан Alaster")
+        # nickname = "Профан Alaster"
+        # user.display_name =  nickname
+        guild =  bot.get_guild(598903919602696202)
+        member =  guild.get_member(524429275919810561)
+        
+            # user.edit(nick = )
+        member.display_name = random.choice(["Говно", "залупа", "пенис", "хер", "давалка", "хуй", "блядина"
+        "Головка", "шлюха", "жопа", "член", "еблан", "петух" "мудила",
+        "Рукоблуд", "ссанина", "очко", "блядун", "вагина",
+        "Сука", "ебланище", "влагалище", "пердун", "дрочила",
+        "Пидор", "пизда", "туз", "малафья",
+        "Гомик", "мудила", "пилотка", "манда",
+        "Анус", "вагина", "путана", "педрила",
+        "Шалава", "хуила", "мошонка", "елда"])
+        # await member.edit(nick="НУП")
 
+        
