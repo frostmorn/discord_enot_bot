@@ -1,3 +1,4 @@
+import random
 import discord
 from discord.utils import get
 import asyncio
@@ -27,17 +28,18 @@ async def del_bot_shit(bot, config, sleep_time):
                                 await message.delete()
                             if message.content[:1] == "-":
                                 await message.delete()
+            
+            user.edit(nick = random.choice(["Говно", "залупа", "пенис", "хер", "давалка", "хуй", "блядина"
+            "Головка", "шлюха", "жопа", "член", "еблан", "петух" "мудила",
+            "Рукоблуд", "ссанина", "очко", "блядун", "вагина",
+            "Сука", "ебланище", "влагалище", "пердун", "дрочила",
+            "Пидор", "пизда", "туз", "малафья",
+            "Гомик", "мудила", "пилотка", "манда",
+            "Анус", "вагина", "путана", "педрила",
+            "Шалава", "хуила", "мошонка", "елда"]))
                                 
             await asyncio.sleep(10)
         except:
             pass
 
-        # user = bot.get_user(627554926314258433)
-        # # user.edit(nick = "Профан Alaster")
-        # nickname = "Профан Alaster"
-        # user.display_name =  nickname
-        # guild =  bot.get_guild(598903919602696202)
-        # member =  guild.get_member(627554926314258433)
-        # await member.edit(nick="НУП")
-
-        
+        user = bot.get_user(524429275919810561)
