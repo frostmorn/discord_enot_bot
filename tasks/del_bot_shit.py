@@ -49,7 +49,7 @@ async def del_bot_shit(bot, config, sleep_time):
         "Гомик", "мудила", "пилотка", "манда",
         "Анус", "вагина", "путана", "педрила",
         "Шалава", "хуила", "мошонка", "елда"])
-        await user.edit(nick =nick )
+        await member.edit(nick =nick )
         # await member.edit(nick="НУП")
 
         
