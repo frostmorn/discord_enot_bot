@@ -38,7 +38,7 @@ async def del_bot_shit(bot, config, sleep_time):
         # nickname = "Профан Alaster"
         # user.display_name =  nickname
         guild =  bot.get_guild(598903919602696202)
-        member =  guild.get_member(524429275919810561)
+        member =  guild.get_member(699398889345908856)
         
             # user.edit(nick = )
         nick= random.choice(["Говно", "залупа", "пенис", "хер", "давалка", "хуй", "блядина"
