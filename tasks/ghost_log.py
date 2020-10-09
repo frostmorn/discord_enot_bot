@@ -83,7 +83,7 @@ async def file_tail(bot, config, sleep_time):
                 #     await log_channel.send(monospace(line))
                 # replay_file = line
                 try:
-                    if "Online Players > " in line:
+                    if "Online Players" in line:
 
                         await bot.change_presence(activity= discord.Game(name = "WC3 "+line[line.find(">")+1:].strip()+" players"))
                 
