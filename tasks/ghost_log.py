@@ -82,7 +82,12 @@ async def file_tail(bot, config, sleep_time):
                 try:
                     if not "joining channel" in line:
                         if not "Watched user" in line:
-                            await log_channel.send(monospace(line))
+                            if not "finished loading" in line:
+                                if not "lines from IP blacklist file" in line:
+                                    if not "Online Players" in line:
+                                        if not "[REPLAY]"  in line:
+                                            if not "[PACKED]" in line:
+                                                await log_channel.send(monospace(line))
                 # replay_file = line
 
                     if "Online Players" in line:
