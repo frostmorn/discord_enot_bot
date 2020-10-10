@@ -80,7 +80,7 @@ async def file_tail(bot, config, sleep_time):
         else:
             for line in lines:    # Not EOF
                 try:
-                    if not "joining channel in line":
+                    if not "joining channel" in line:
                         if not "Watched user" in line:
                             await log_channel.send(monospace(line))
                 # replay_file = line
