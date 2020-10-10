@@ -79,11 +79,12 @@ async def file_tail(bot, config, sleep_time):
             print("Encountered unknown character in server log, skipping lines.")
         else:
             for line in lines:    # Not EOF
-                if not "joining channel in line":
-                    if not "Watched user" in line:
-                        await log_channel.send(monospace(line))
-                # replay_file = line
                 try:
+                    if not "joining channel in line":
+                        if not "Watched user" in line:
+                            await log_channel.send(monospace(line))
+                # replay_file = line
+
                     if "Online Players" in line:
 
                         await bot.change_presence(activity= discord.Game(name = "WC3("+line[line.find("Players"):]+")"))
