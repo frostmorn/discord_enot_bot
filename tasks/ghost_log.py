@@ -89,7 +89,8 @@ async def file_tail(bot, config, sleep_time):
                                             if not "[PACKED]" in line:
                                                 if not "joined the game" in line:
                                                     if not "[Local]" in line:
-                                                        await log_channel.send(monospace(line))
+                                                        if not "WHISPER" in line:
+                                                            await log_channel.send(monospace(line))
                 # replay_file = line
 
                     if "Online Players" in line:
