@@ -4,7 +4,7 @@
     "token"                 :   "Nzk0MDQ3NDY3MTc5MzQzODgz.X-1IVA.D2ifE--3bM6rsnhRVJ7qsvabqyE",
     "ghost_log"             :   "/home/fiona/fiona.log",
     "map_config_path"       :   "/home/fiona/config/mapcfgs/",
-    "map_path"              :   "maps",
+    "map_path"              :   "/home/orphey/Projects/discord_en0t_bot/maps",
     "loaded_replay_path"    :   "/home/fiona/loaded_replays",
     "channels":{
         "debug"             :   686315238848725033, 

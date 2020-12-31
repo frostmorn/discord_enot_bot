@@ -118,7 +118,7 @@ def calc_sha(filename):
             file_hash.update(fb) # Update the hash
             fb = f.read(1024) # Read the next block from the file
         f.close()
-        return file_hash.hexdigest()
+        return file_hash.hexdigest().upper()
 def get_leaderboard():
     headers = {
         'authority': 'mee6.xyz',

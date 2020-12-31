@@ -1,39 +1,47 @@
 import asyncio
 import os
 import uuid
-from helpers import monospace_message as monospace 
-from helpers import monospace_solarized_cyan_message as monospace_cyan
-from helpers import monospace_solarized_yellow_message as monospace_yellow
-from helpers import monospace_solarized_green_message as monospace_green
-from helpers import monospace_solarized_red_message as monospace_red
 from helpers import download_file
 from helpers import get_apm_data
 import os
+from discord import Embed, Colour
 from helpers import calc_sha
 from helpers import download_file
 async def map_download(client, config, attachment, msg):
     await client.wait_until_ready()
     os.chdir(config["map_path"])
     filename    =   attachment.filename.replace(' ', '_')
-    extension   =   filename.split(".")
-    filename    =   ".".join(extension[:len(extension)-1])
-    map_name = filename
-    extension   =   extension[len(extension)-1]
-    old_map_sha =   ""
+    map_name    =   filename
+    old_map_sha = ""
+    new_map_sha = ""
 
-    if os.path.isfile(filename + "." + extension):
-        old_map_sha = calc_sha(filename + "." + extension)
-        filename = filename + uuid.uuid4().hex[:6].upper()
-    await download_file(attachment.url, filename + "." + extension)
+    embed = ""
+    print("Filename = ", filename)
+    if os.path.isfile(filename):
+        old_map_sha = calc_sha(filename)
+        print("File ", filename, " exist")
+        filename = uuid.uuid4().hex[:6].upper() + "_" +filename
+        print("New filename ", filename)
+    await download_file(attachment.url, filename)
+
     if old_map_sha != "":
-        new_map_sha = calc_sha(filename + "." + extension)
+        new_map_sha = calc_sha(filename)
         if old_map_sha == new_map_sha:
-            message = monospace_red("Map allready exists with name " + map_name)
-            os.remove(filename + "." + extension)
+            os.remove(filename)
+            embed = Embed(title=str("Map upload error [ allready exist ] (" + str(msg.author.display_name)+")"), colour=0xff0000)
+            embed.add_field(name ="MAPNAME", value = map_name)
+            embed.add_field(name="SHA1SUM", value = new_map_sha)
+ 
         else:
-            message = monospace("Map uploaded. Map name - " + filename)
+            embed = Embed(title=str("Map upload [ complete  but another found ] (" + str(msg.author.display_name)+")"), colour=0x0000ff)
+            embed.add_field(name ="MAPNAME", value = filename)
+            embed.add_field(name="NEW SHA1SUM", value = new_map_sha)
+            embed.add_field(name="OLD SHA1SUM", value = old_map_sha)
+            os.remove(filename)
     else:
-        message = monospace("Map uploaded. Map name - " + filename)
-
-    await msg.channel.send(message)
+        embed = Embed(title=str("Map upload [ complete ] (" + str(msg.author.display_name)+")"), colour=0x00ff00)
+        embed.add_field(name ="MAPNAME", value = filename)
+    print("OLD MAP SHA1 ", old_map_sha)
+    print("NEW MAP SHA1 ", new_map_sha)
+    await msg.channel.send(embed = embed)
     
