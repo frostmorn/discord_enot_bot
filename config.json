@@ -1,10 +1,10 @@
 {
     "map_message_time_exist": 120,
-    "command_triger"        :   ".",
-    "token"                 :   "NzMzMzA5MTcxMzUyNjAwNjM2.XxBRYg.aN37CukI7mOY_FYeu4R1bRrvABo",
+    "command_triger"        :   "&",
+    "token"                 :   "Nzk0MDQ3NDY3MTc5MzQzODgz.X-1IVA.D2ifE--3bM6rsnhRVJ7qsvabqyE",
     "ghost_log"             :   "/home/fiona/fiona.log",
     "map_config_path"       :   "/home/fiona/config/mapcfgs/",
-    "map_path"              :   "/home/fiona/maps/",
+    "map_path"              :   "maps",
     "loaded_replay_path"    :   "/home/fiona/loaded_replays",
     "channels":{
         "debug"             :   686315238848725033, 

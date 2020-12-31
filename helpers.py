@@ -3,8 +3,8 @@ import w3g
 import requests
 import hashlib
 import os
+import sys
 import platform
-
 def monospace_message(message):
     return "```"+message+"```"
 
@@ -24,6 +24,20 @@ async def get_request(url):
     r = requests.get(url)
     return r
 
+def load_config():
+    config = {}
+    config_file_path = "config.json"
+    if len(sys.argv) == 2:
+        print("provided config file :\r\n", sys.argv[1])
+        if os.path.isfile(sys.argv[1]):
+            config_file_path = sys.argv[1]
+        else:
+            raise Exception("CONFIG FILE DOESN'T EXIST")
+        
+
+    with open(config_file_path) as config_file:
+        config = json.load(config_file)
+    return config
 
 
 async def download_file(url,  filename):
