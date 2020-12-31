@@ -13,8 +13,17 @@ from tasks import role_update
 from events.on_message.map_loader import map_download
 from helpers import calc_sha
 import os 
+import sys
 from discord.ext.commands import CommandNotFound
 # load config
+config_file = "config.json"
+if len(sys.argv) == 2:
+    print("provided config file :\r\n", sys.argv[1])
+    if os.path.isfile(sys.argv[1]):
+        config_file = sys.argv[1]
+    else:
+        raise Exception("CONFIG FILE DOESN'T EXIST")
+    
 config = {}
 with open("config.json") as config_file:
     config = json.load(config_file)
