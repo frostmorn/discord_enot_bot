@@ -6,6 +6,8 @@ from events.on_message.map_loader import map_download
 from helpers import calc_sha
 import os 
 from discord.ext.commands import CommandNotFound
+import sys
+
 # load config
 config_file_path = "config.json"
 if len(sys.argv) == 2:
