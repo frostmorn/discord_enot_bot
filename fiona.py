@@ -7,16 +7,16 @@ import os
 import sys
 from discord.ext.commands import CommandNotFound
 # load config
-config_file = "config.json"
+config_file_path = "config.json"
 if len(sys.argv) == 2:
     print("provided config file :\r\n", sys.argv[1])
     if os.path.isfile(sys.argv[1]):
-        config_file = sys.argv[1]
+        config_file_path = sys.argv[1]
     else:
         raise Exception("CONFIG FILE DOESN'T EXIST")
     
 config = {}
-with open("config.json") as config_file:
+with open(config_file_path) as config_file:
     config = json.load(config_file)
 
 bot = commands.Bot(config["command_triger"])
