@@ -11,9 +11,6 @@ import json
 import asyncio
 import time
 
-config = {}
-with open("config.json") as config_file:
-    config = json.load(config_file)
 class Maps(Cog):
     def __init__(self, bot):
         self.bot = bot
