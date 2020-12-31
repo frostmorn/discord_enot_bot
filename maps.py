@@ -7,6 +7,7 @@ from helpers import calc_sha
 import os 
 from discord.ext.commands import CommandNotFound
 import sys
+from discord.ext import commands
 
 # load config
 config_file_path = "config.json"
