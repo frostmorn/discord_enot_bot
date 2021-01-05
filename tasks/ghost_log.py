@@ -94,10 +94,9 @@ async def file_tail(bot, config, sleep_time):
                                                                 await log_channel.send(monospace(line))
                 # replay_file = line
 
-                    if "Online Players" in line:
-
-                        await bot.change_presence(activity= discord.Game(name = "WC3("+line[line.find("Players"):]+")"))
-                
+                    if "Online" in line:
+                        await bot.change_presence(activity= discord.Game(name = "WC3("+line[line.find("Online:")+7:]+")"))                
+                        
                     if 'saving data to file' in line:
                         print("Replay file created")
                         replay_file = line.split("[")[3].replace("]", "").replace("\n", "").replace("\r", "")
