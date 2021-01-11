@@ -37,7 +37,7 @@ async def map_download(client, config, attachment, msg):
             embed.add_field(name ="MAPNAME", value = filename)
             embed.add_field(name="NEW SHA1SUM", value = new_map_sha)
             embed.add_field(name="OLD SHA1SUM", value = old_map_sha)
-            os.remove(filename)
+
     else:
         embed = Embed(title=str("Map upload [ complete ] (" + str(msg.author.display_name)+")"), colour=0x00ff00)
         embed.add_field(name ="MAPNAME", value = filename)
