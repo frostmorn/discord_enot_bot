@@ -20,21 +20,22 @@ async def map_download(client, config, attachment, msg):
     if os.path.isfile(filename):
         old_map_sha = calc_sha(filename)
         print("File ", filename, " exist")
-        filename = uuid.uuid4().hex[:6].upper() + "_" +filename
-        print("New filename ", filename)
-    await download_file(attachment.url, filename)
+        new_filename = uuid.uuid4().hex[:6].upper() + "_" +filename
+        print("New filename ", new_filename)
+    await download_file(attachment.url, new_filename)
 
     if old_map_sha != "":
-        new_map_sha = calc_sha(filename)
+        new_map_sha = calc_sha(new_filename)
         if old_map_sha == new_map_sha:
-            os.remove(filename)
+            os.remove(new_filename)
             embed = Embed(title=str("Map upload error [ allready exist ] (" + str(msg.author.display_name)+")"), colour=0xff0000)
             embed.add_field(name ="MAPNAME", value = map_name)
             embed.add_field(name="SHA1SUM", value = new_map_sha)
  
         else:
             embed = Embed(title=str("Map upload [ complete  but another found ] (" + str(msg.author.display_name)+")"), colour=0x0000ff)
-            embed.add_field(name ="MAPNAME", value = filename)
+            embed.add_field(name ="OLD MAPNAME", value = filename)
+            embed.add_field(name ="NEW MAPNAME", value = new_filename)
             embed.add_field(name="NEW SHA1SUM", value = new_map_sha)
             embed.add_field(name="OLD SHA1SUM", value = old_map_sha)
 
