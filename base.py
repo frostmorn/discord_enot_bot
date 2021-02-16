@@ -1,6 +1,7 @@
 import discord
 import json
 import discord.ext
+import sys
 from discord.ext import commands
 from commands import map as map_commands
 from commands import base as base_commands
