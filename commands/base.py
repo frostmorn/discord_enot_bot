@@ -7,7 +7,7 @@ from discord.ext.commands import Cog
 import keyw
 from helpers import monospace_message
 import json
-
+import sys
 config = {}
 with open("config.json") as config_file:
     config = json.load(config_file)
