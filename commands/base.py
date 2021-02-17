@@ -236,9 +236,8 @@ class Base(Cog):
         req = await get_request("https://sinoptik.ua/погода-"+line)
         if req.status_code == 200:
             html_object = html.fromstring(req.content.decode("utf-8"))
-            region = html_object.xpath("//*[@class='currentRegion']/text()")
-            temperature = html_object.xpath("//*[@class='today-temp']/text()")
-            temperature = temperature[0]
+            region = html_object.xpath("//*[@class='currentRegion']/text()")[0]
+            temperature = html_object.xpath("//*[@class='today-temp']/text()")[0]
             print(temperature)
             embed = Embed(title="Weather in "+region)
             embed.add_field(name ="Temperature", value = temperature)
