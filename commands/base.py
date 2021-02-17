@@ -229,17 +229,17 @@ class Base(Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    async def gwk(self, ctx):
+    async def gwk(self, ctx, line):
         """
-            Gets weather in Kiev City
+            Gets weather in `city`
         """ 
-        req = await get_request("https://sinoptik.ua/%D0%BF%D0%BE%D0%B3%D0%BE%D0%B4%D0%B0-%D0%BA%D0%B8%D0%B5%D0%B2")
+        req = await get_request("https://sinoptik.ua/погода-"+line)
         if req.status_code == 200:
             html_object = html.fromstring(req.content.decode("utf-8"))
             temperature = html_object.xpath("//*[@class='today-temp']/text()")
             temperature = temperature[0]
             print(temperature)
-            embed = Embed(title="Weather in Kiev")
+            embed = Embed(title="Weather in "+line)
             embed.add_field(name ="Temperature", value = temperature)
             await ctx.send(embed=embed)
         else:
