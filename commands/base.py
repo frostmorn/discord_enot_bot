@@ -7,6 +7,7 @@ from discord.ext import commands
 from discord.ext.commands import Cog
 import keyw
 from helpers import monospace_message
+from helpers import monospace_solarized_red_message as error_msg
 import json
 import sys
 config = {}
