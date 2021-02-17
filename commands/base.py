@@ -1,3 +1,4 @@
+from helpers import get_request
 from discord import Colour
 from discord import Embed
 from discord.utils import get
@@ -224,3 +225,26 @@ class Base(Cog):
                 roles = roles + role.name + "\r\n"
             embed.add_field(name="Roles", value=monospace_message(roles))
         await ctx.send(embed=embed)
+
+    @commands.command()
+    async def gwk(self, ctx, line):
+        """
+            Gets weather in Kiev City
+        """ 
+        # Weather URL : https://www.gismeteo.ua/ua/weather-kyiv-4944/
+        # XPATH weather
+        # /html/body/section/div[2]/div/div[1]/div/div[2]/div[1]/div[1]/a[1]/div/div[1]/div[3]/div[1]/span[1]/span
+
+        """
+            Returns random xkcd comix
+        """ 
+        req = await get_request("https://www.gismeteo.ua/ua/weather-kyiv-4944/")
+        if req.status_code == 200:
+            html_object = html.fromstring(req.content.decode("utf-8"))
+            comix_img = html_object.xpath("/html/body/section/div[2]/div/div[1]/div/div[2]/div[1]/div[1]/a[1]/div/div[1]/div[3]/div[1]/span[1]/span/text()")
+            print(comix_img)
+            embed = Embed(title="Weather in Kiev")
+            embed.add_field(name ="Temperature", value = map_name)
+            await ctx.send(embed=embed)
+        else:
+            await ctx.send(error_msg("Error while getting Kiev weather. Could be, zonbies attacked our satellites"))
