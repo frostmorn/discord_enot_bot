@@ -237,7 +237,7 @@ class Base(Cog):
         if req.status_code == 200:
             html_object = html.fromstring(req.content.decode("utf-8"))
             temperature = html_object.xpath("//*[@class='today-temp']/text()")
-            temperature = temperature.strip("[']")
+            temperature = temperature[0]
             print(temperature)
             embed = Embed(title="Weather in Kiev")
             embed.add_field(name ="Temperature", value = temperature)
