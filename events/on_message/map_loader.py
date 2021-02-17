@@ -14,7 +14,7 @@ async def map_download(client, config, attachment, msg):
     map_name    =   filename
     old_map_sha = ""
     new_map_sha = ""
-
+    new_filename=filename
     embed = ""
     print("Filename = ", filename)
     if os.path.isfile(filename):
