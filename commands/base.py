@@ -6,6 +6,7 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import Cog
 import keyw
+from lxml import html
 from helpers import monospace_message
 from helpers import monospace_solarized_red_message as error_msg
 import json
@@ -235,10 +236,6 @@ class Base(Cog):
         # Weather URL : https://www.gismeteo.ua/ua/weather-kyiv-4944/
         # XPATH weather
         # /html/body/section/div[2]/div/div[1]/div/div[2]/div[1]/div[1]/a[1]/div/div[1]/div[3]/div[1]/span[1]/span
-
-        """
-            Returns random xkcd comix
-        """ 
         req = await get_request("https://www.gismeteo.ua/ua/weather-kyiv-4944/")
         if req.status_code == 200:
             html_object = html.fromstring(req.content.decode("utf-8"))
