@@ -239,10 +239,10 @@ class Base(Cog):
         req = await get_request("https://www.gismeteo.ua/ua/weather-kyiv-4944/")
         if req.status_code == 200:
             html_object = html.fromstring(req.content.decode("utf-8"))
-            comix_img = html_object.xpath("/html/body/section/div[2]/div/div[1]/div/div[2]/div[1]/div[1]/a[1]/div/div[1]/div[3]/div[1]/span[1]/span/text()")
-            print(comix_img)
+            temperature = html_object.xpath("/html/body/section/div[2]/div/div[1]/div/div[2]/div[1]/div[1]/a[1]/div/div[1]/div[3]/div[1]/span[1]/span/text()")
+            print(temperature)
             embed = Embed(title="Weather in Kiev")
-            embed.add_field(name ="Temperature", value = map_name)
+            embed.add_field(name ="Temperature", value = temperature)
             await ctx.send(embed=embed)
         else:
             await ctx.send(error_msg("Error while getting Kiev weather. Could be, zonbies attacked our satellites"))
