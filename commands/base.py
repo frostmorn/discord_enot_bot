@@ -229,7 +229,7 @@ class Base(Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    async def gwk(self, ctx, line):
+    async def gw(self, ctx, line):
         """
             Gets weather in `city`
         """ 
