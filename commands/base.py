@@ -243,4 +243,4 @@ class Base(Cog):
             embed.add_field(name ="Temperature", value = temperature)
             await ctx.send(embed=embed)
         else:
-            await ctx.send(error_msg("Error while getting Kiev weather. Could be, zonbies attacked our satellites"))
+            await ctx.send(error_msg("Error while getting weather in "+line))
