@@ -118,7 +118,7 @@ class Base(Cog):
             elif character in "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM":
                 new_message = new_message + ":regional_indicator_"+character.lower()+":"
             elif character == " ":
-                new_message = new_message + "<:space:743148798926258187>"
+                new_message = new_message + "<:space:818564646762971147>"
             elif character == "@":
                 new_message = new_message + " @"
                 skip =1
