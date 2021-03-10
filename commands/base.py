@@ -252,7 +252,7 @@ class Base(Cog):
         """
             Computes math expression
         """ 
-        expression = " ".join(ctx.message.split(" ")[1:])
+        expression = " ".join(ctx.message.clean_content.split(" ")[1:])
         embed = Embed(title = "Expression "+expression)
         embed.add_field(name="Value", value = sympy.sympify(expression))
         await ctx.send(embed=embed)
