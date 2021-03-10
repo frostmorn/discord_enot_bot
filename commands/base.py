@@ -257,7 +257,7 @@ class Base(Cog):
         message = message.replace(" ", "").replace("`","")
 
         print("After replace = "+message)
-        expression = " ".join(message)
+        expression = "".join(message)
         embed = Embed(title = "Expression "+expression)
         embed.add_field(name="Value", value = str(sympy.sympify(expression)))
         await ctx.send(embed=embed)
