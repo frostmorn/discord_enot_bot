@@ -260,5 +260,5 @@ class Base(Cog):
         print("After replace = "+message)
         expression = "".join(message)
         embed = Embed(title = "Expression "+expression)
-        embed.add_field(name="Value", value = str(numexpr.evalute(expression)))
+        embed.add_field(name="Value", value = str(numexpr.evaluate(expression)))
         await ctx.send(embed=embed)
