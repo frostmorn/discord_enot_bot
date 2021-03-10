@@ -11,6 +11,7 @@ from lxml import html
 from helpers import monospace_message
 from helpers import monospace_solarized_red_message as error_msg
 import json
+import numexpr
 import sys
 config = {}
 with open("config.json") as config_file:
@@ -259,5 +260,5 @@ class Base(Cog):
         print("After replace = "+message)
         expression = "".join(message)
         embed = Embed(title = "Expression "+expression)
-        embed.add_field(name="Value", value = str(sympy.sympify(expression)))
+        embed.add_field(name="Value", value = str(numexpr.evalute(expression)))
         await ctx.send(embed=embed)
