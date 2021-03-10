@@ -252,7 +252,8 @@ class Base(Cog):
             Computes math expression
         """ 
         message = ctx.message.content
-        message = message.lstrip("` ").rstrip("` ")
+        message = message.lstrip("` ")
+        message = message.rstrip("` ")
         expression = " ".join(message.split(" ")[1:])
         embed = Embed(title = "Expression "+expression)
         embed.add_field(name="Value", value = str(sympy.sympify(expression)))
