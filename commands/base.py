@@ -252,6 +252,7 @@ class Base(Cog):
             Computes math expression
         """ 
         message = ctx.message.content.split(" ")[1:]
+        message = " ".join(message)
         print("Compute message = "+message)
         message = message.replace(" ", "").replace("`","")
 
