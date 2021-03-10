@@ -248,7 +248,7 @@ class Base(Cog):
             await ctx.send(error_msg("Error while getting weather in "+line))
 
     @commands.command()
-    async def c(self, ctx):
+    async def c(self, ctx, line):
         """
             Computes math expression
         """ 
