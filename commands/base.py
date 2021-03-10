@@ -1,5 +1,4 @@
 import sympy
-import operator as op
 from helpers import get_request
 from discord import Colour
 from discord import Embed
@@ -248,11 +247,11 @@ class Base(Cog):
             await ctx.send(error_msg("Error while getting weather in "+line))
 
     @commands.command()
-    async def c(self, ctx, line):
+    async def calc(self, ctx, line):
         """
             Computes math expression
         """ 
         expression = " ".join(ctx.message.clean_content.split(" ")[1:])
         embed = Embed(title = "Expression "+expression)
-        embed.add_field(name="Value", value = sympy.sympify(expression))
+        embed.add_field(name="Value", value = str(sympy.sympify(expression)))
         await ctx.send(embed=embed)
