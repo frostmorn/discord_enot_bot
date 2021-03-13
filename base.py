@@ -36,7 +36,6 @@ bot = commands.Bot(config["command_triger"])
 bot.add_cog(map_commands.Maps(bot))
 
 bot.add_cog(base_commands.Base(bot))
-
 bot.add_cog(bot_commands.Bot(bot))
 bot.add_cog(reactions_commands.Reactions(bot))
 bot.add_cog(xkcd_commands.Xkcd(bot))
