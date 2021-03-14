@@ -43,7 +43,7 @@ class Bug(Cog):
             Adds bug to list
         """
         for role in ctx.author.roles:
-            if not("Tester" in role):
+            if not("Tester" in role.name):
                 await ctx.send("U r not a tester, so u can't use that")
                 return
         name = " ".join(ctx.message.content.split(" ")[1:])
@@ -71,7 +71,7 @@ class Bug(Cog):
             Removes bug from list with ID
         """
         for role in ctx.author.roles:
-            if not("Tester" in role):
+            if not("Tester" in role.name):
                 await ctx.send("U r not a tester, so u can't use that")
                 return        
         for bug in self.bugs:
@@ -92,7 +92,7 @@ class Bug(Cog):
             Shows bugs list
         """
         for role in ctx.author.roles:
-            if not("Tester" in role):
+            if not("Tester" inrole.name):
                 await ctx.send("U r not a tester, so u can't use that")
                 return
         for bug in self.bugs:
