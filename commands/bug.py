@@ -58,7 +58,7 @@ class Bug(Cog):
         self.bugs_save()
         embed = Embed(title="Bug ID "+str(self.bugs[-1]["no"]+ "[added]"))
         embed.add_field(name="Name:", value=self.bugs[-1]["name"])
-        embed.add_field(name="author", value=self.bugs[-1]bug["author"])
+        embed.add_field(name="author", value=self.bugs[-1]["author"])
         await ctx.send(embed=embed)
     @commands.command()
     async def brm(self, ctx, no):
