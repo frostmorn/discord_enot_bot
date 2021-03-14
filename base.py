@@ -7,6 +7,7 @@ from commands import map as map_commands
 from commands import base as base_commands
 from commands import bot as bot_commands
 from commands import base
+from commands import bug as bug_commands
 from commands import xkcd as xkcd_commands
 from commands import reactions as reactions_commands
 from tasks import ghost_log
@@ -32,6 +33,7 @@ with open(config_file_path) as config_file:
 
 bot = commands.Bot(config["command_triger"])
 
+bot.add_cog(bug_commands.Bug(bot))
 
 bot.add_cog(map_commands.Maps(bot))
 
