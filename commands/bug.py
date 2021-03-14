@@ -47,7 +47,7 @@ class Bug(Cog):
         for bug in self.bugs:
             if name == bug["name"]:
                 bug_exists = True
-                await ctx.send("Bug with name = " +name+ " allready exists with № "+str(bug["no"])) 
+                await ctx.send("Bug with name = " +name+ " allready exists with ID "+str(bug["no"])) 
         if not (bug_exists):
             self.bugs.append(   {
                                 "no": uuid.uuid4().hex[:6].upper(),
@@ -56,21 +56,28 @@ class Bug(Cog):
                             } 
                         )
         self.bugs_save()
-
+        embed = Embed(title="Bug ID "+str(self.bugs[-1]["no"]+ "[added]"))
+        embed.add_field(name="Name:", value=self.bugs[-1]["name"])
+        embed.add_field(name="author", value=self.bugs[-1]bug["author"])
+        await ctx.send(embed=embed)
     @commands.command()
     async def brm(self, ctx, no):
         
         """
-            Removes bug from list
+            Removes bug from list with ID
         """
         
         for bug in self.bugs:
             if no == bug["no"]:
+                embed = Embed(title="Bug ID "+str(self.bugs[-1]["no"]+ "[deleted]"))
+                embed.add_field(name="Name:", value=self.bugs[-1]["name"])
+                embed.add_field(name="author", value=self.bugs[-1]bug["author"])
+                await ctx.send(embed=embed)  
                 self.bugs.remove(bug)
-                await ctx.send("Bug " + bug["name"] + " deleted")    
+                self.bugs_save()
                 return
         else:
-            await ctx.send("Bug with № " + no + " doesn't exist.") 
+            await ctx.send("Bug with ID " + no + " doesn't exist.") 
 
     @commands.command()
     async def blist(self, ctx):
@@ -78,7 +85,7 @@ class Bug(Cog):
             Shows bugs list
         """
         for bug in self.bugs:
-            embed = Embed(title="Bug № "+str(bug["no"]))
+            embed = Embed(title="Bug ID "+str(bug["no"]))
             embed.add_field(name="Name:", value=bug["name"])
             embed.add_field(name="author", value=bug["author"])
             await ctx.send(embed=embed)
