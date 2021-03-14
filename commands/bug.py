@@ -65,7 +65,7 @@ class Bug(Cog):
         """
         
         for bug in self.bugs:
-            if int(no) == bug["no"]:
+            if no == bug["no"]:
                 self.bugs.remove(bug)
                 await ctx.send("Bug " + bug["name"] + " deleted")    
                 return
