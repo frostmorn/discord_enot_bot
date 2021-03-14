@@ -92,7 +92,7 @@ class Bug(Cog):
             Shows bugs list
         """
         for role in ctx.author.roles:
-            if not("Tester" inrole.name):
+            if not("Tester" in role.name):
                 await ctx.send("U r not a tester, so u can't use that")
                 return
         for bug in self.bugs:
