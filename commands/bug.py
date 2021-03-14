@@ -63,7 +63,7 @@ class Bug(Cog):
                             } 
                         )
         self.bugs_save()
-        embed = Embed(title="Bug ID "+str(self.bugs[-1]["no"]+ "[ added 🐛 ]"))
+        embed = Embed(title="🐛 Bug ID "+str(self.bugs[-1]["no"]+ "[ added 🆕 ]"))
         embed.add_field(name="Name:", value=self.bugs[-1]["name"])
         embed.add_field(name="author", value=self.bugs[-1]["author"])
         await ctx.send(embed=embed)
@@ -82,7 +82,7 @@ class Bug(Cog):
             return       
         for bug in self.bugs:
             if no == bug["no"]:
-                embed = Embed(title="Bug ID "+str(self.bugs[-1]["no"]+ "[ deleted 🚮 ]"))
+                embed = Embed(title="🐛 Bug ID "+str(self.bugs[-1]["no"]+ "[ deleted 🚮 ]"))
                 embed.add_field(name="Name:", value=self.bugs[-1]["name"])
                 embed.add_field(name="author", value=self.bugs[-1]["author"])
                 await ctx.send(embed=embed)  
@@ -105,7 +105,7 @@ class Bug(Cog):
             await ctx.send("U r not a tester, so u can't use that")
             return
         for bug in self.bugs:
-            embed = Embed(title="Bug ID "+str(bug["no"]))
+            embed = Embed(title="🐛 Bug ID "+str(bug["no"]))
             embed.add_field(name="Name:", value=bug["name"])
             embed.add_field(name="author", value=bug["author"])
             await ctx.send(embed=embed)
