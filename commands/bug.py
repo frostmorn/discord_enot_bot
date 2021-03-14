@@ -42,10 +42,13 @@ class Bug(Cog):
         """
             Adds bug to list
         """
+        author_tester = False
         for role in ctx.author.roles:
-            if not("Tester" in role.name):
-                await ctx.send("U r not a tester, so u can't use that")
-                return
+            if "Tester" in role.name:
+                author_tester = True
+        if not(author_tester) :
+            await ctx.send("U r not a tester, so u can't use that")
+            return
         name = " ".join(ctx.message.content.split(" ")[1:])
         bug_exists = False
         for bug in self.bugs:
@@ -70,10 +73,13 @@ class Bug(Cog):
         """
             Removes bug from list with ID
         """
+        author_tester = False
         for role in ctx.author.roles:
-            if not("Tester" in role.name):
-                await ctx.send("U r not a tester, so u can't use that")
-                return        
+            if "Tester" in role.name:
+                author_tester = True
+        if not(author_tester) :
+            await ctx.send("U r not a tester, so u can't use that")
+            return       
         for bug in self.bugs:
             if no == bug["no"]:
                 embed = Embed(title="Bug ID "+str(self.bugs[-1]["no"]+ "[deleted]"))
@@ -91,10 +97,13 @@ class Bug(Cog):
         """
             Shows bugs list
         """
+        author_tester = False
         for role in ctx.author.roles:
-            if not("Tester" in role.name):
-                await ctx.send("U r not a tester, so u can't use that")
-                return
+            if "Tester" in role.name:
+                author_tester = True
+        if not(author_tester) :
+            await ctx.send("U r not a tester, so u can't use that")
+            return
         for bug in self.bugs:
             embed = Embed(title="Bug ID "+str(bug["no"]))
             embed.add_field(name="Name:", value=bug["name"])
