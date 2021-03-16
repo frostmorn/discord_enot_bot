@@ -82,9 +82,9 @@ class Bug(Cog):
             return       
         for bug in self.bugs:
             if no == bug["no"]:
-                embed = Embed(title="🐛 Bug ID "+str(self.bugs[-1]["no"]+ "[ deleted 🚮 ]"))
-                embed.add_field(name="Name:", value=self.bugs[-1]["name"])
-                embed.add_field(name="author", value=self.bugs[-1]["author"])
+                embed = Embed(title="🐛 Bug ID "+str(bug["no"]+ "[ deleted 🚮 ]"))
+                embed.add_field(name="Name:", value=bug["name"])
+                embed.add_field(name="author", value=bug["author"])
                 await ctx.send(embed=embed)  
                 self.bugs.remove(bug)
                 self.bugs_save()
