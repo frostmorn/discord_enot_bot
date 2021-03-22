@@ -70,7 +70,7 @@ async def file_tail(bot, config, sleep_time):
     file.seek(0, os.SEEK_END)
     print("------")
     print("Tailing {} every {} seconds.".format(filename, sleep_time))
-    
+    last_line = ""    
     while not bot.is_closed():
         try:
             await asyncio.sleep(sleep_time)
@@ -91,7 +91,10 @@ async def file_tail(bot, config, sleep_time):
                                                     if not "[Local]" in line:
                                                         if not "WHISPER" in line:
                                                             if not "from account" in line:
-                                                                await log_channel.send(monospace(line))
+                                                                if last_line != line:
+                                                                    await log_channel.send(monospace(line))
+                                                                    last_line = line
+                                                                    
                 # replay_file = line
 
                     if "Online" in line:
