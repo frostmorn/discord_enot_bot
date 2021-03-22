@@ -120,7 +120,7 @@ async def file_tail(bot, config, sleep_time):
                 except:
                     asyncio.sleep(0.5)
                     # [line.find("]")+1:][line.find("]")+1:][line.find("[")+2:].replace(']', '')
-            messages_to_send = []
+            messages_to_send = ["",]
             current_message = 0
             if len(lines_to_print)> 0:
                 for line in lines_to_print:
