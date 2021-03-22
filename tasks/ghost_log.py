@@ -120,8 +120,17 @@ async def file_tail(bot, config, sleep_time):
                 except:
                     asyncio.sleep(0.5)
                     # [line.find("]")+1:][line.find("]")+1:][line.find("[")+2:].replace(']', '')
+            messages_to_send = []
+            current_message = 0
             if len(lines_to_print)> 0:
-                await log_channel.send(monospace("\n".join(lines_to_print)))
+                for line in lines_to_print:
+                    if len(messages_to_send[current_message]) > 1800:
+                        current_message = current_message +1
+                    messages_to_send[current_message] =  messages_to_send[current_message] + line+ "\n"
+                    
+            for message in messages_to_send:
+                await log_channel.send(monospace(message))
+                        
             await asyncio.sleep(sleep_time)
 
         
