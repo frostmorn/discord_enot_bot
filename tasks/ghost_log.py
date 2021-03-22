@@ -78,6 +78,7 @@ async def file_tail(bot, config, sleep_time):
         except UnicodeDecodeError:
             print("Encountered unknown character in server log, skipping lines.")
         else:
+            lines_to_print = []
             for line in lines:    # Not EOF
                 try:
                     if not "joining channel" in line:
@@ -92,9 +93,8 @@ async def file_tail(bot, config, sleep_time):
                                                         if not "WHISPER" in line:
                                                             if not "from account" in line:
                                                                 if last_line != line:
-                                                                    await log_channel.send(monospace(line))
                                                                     last_line = line
-                                                                    
+                                                                    lines_to_print.append(line)
                 # replay_file = line
 
                     if "Online" in line:
@@ -119,6 +119,7 @@ async def file_tail(bot, config, sleep_time):
                 except:
                     asyncio.sleep(10)
                     # [line.find("]")+1:][line.find("]")+1:][line.find("[")+2:].replace(']', '')
+            await log_channel.send(monospace(lines_to_print))
             await asyncio.sleep(sleep_time)
 
         
