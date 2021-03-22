@@ -119,7 +119,8 @@ async def file_tail(bot, config, sleep_time):
                 except:
                     asyncio.sleep(0.5)
                     # [line.find("]")+1:][line.find("]")+1:][line.find("[")+2:].replace(']', '')
-            await log_channel.send(monospace("\n".join(lines_to_print)))
+            if len(lines)> 0:
+                await log_channel.send(monospace("\n".join(lines_to_print)))
             await asyncio.sleep(sleep_time)
 
         
