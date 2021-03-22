@@ -54,9 +54,10 @@ CBEIGEBG2  = '\33[106m'
 CWHITEBG2  = '\33[107m'
 
 async def file_tail(bot, config, sleep_time):
+
+    filename = config["ghost_log"]
     print("------")
     print("Tailing {} every {} seconds.".format(filename, sleep_time))
-    filename = config["ghost_log"]
     while not bot.is_closed():
         await bot.wait_until_ready()
         flood_channel = bot.get_channel(config["channels"]["flood"])
