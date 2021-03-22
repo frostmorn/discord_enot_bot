@@ -130,7 +130,8 @@ async def file_tail(bot, config, sleep_time):
                     messages_to_send[current_message] =  messages_to_send[current_message] + line+ "\n"
 
             for message in messages_to_send:
-                await log_channel.send(monospace(message))
+                if message !="":
+                    await log_channel.send(monospace(message))
                         
             await asyncio.sleep(sleep_time)
 
