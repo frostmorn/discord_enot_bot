@@ -54,24 +54,24 @@ CBEIGEBG2  = '\33[106m'
 CWHITEBG2  = '\33[107m'
 
 async def file_tail(bot, config, sleep_time):
-    filename = config["ghost_log"]
-
-    await bot.wait_until_ready()
-    flood_channel = bot.get_channel(config["channels"]["flood"])
-    log_channel = bot.get_channel(config["channels"]["log"])
-    bugs_and_replays_channel = bot.get_channel(config["channels"]["bugs_and_replays"])
-    try:
-        file = open(filename, 'r', encoding='utf-8')
-    except IOError:
-        # sys.exit("FATAL ERROR: There was a problem opening \"{}\".".format(filename))
-        print(CRED + "[ ERROR ]" + CEND + " ghost log open error")
-        return
-    
-    file.seek(0, os.SEEK_END)
     print("------")
     print("Tailing {} every {} seconds.".format(filename, sleep_time))
-    last_line = ""    
+    filename = config["ghost_log"]
     while not bot.is_closed():
+        await bot.wait_until_ready()
+        flood_channel = bot.get_channel(config["channels"]["flood"])
+        log_channel = bot.get_channel(config["channels"]["log"])
+        bugs_and_replays_channel = bot.get_channel(config["channels"]["bugs_and_replays"])
+        try:
+            file = open(filename, 'r', encoding='utf-8')
+        except IOError:
+            # sys.exit("FATAL ERROR: There was a problem opening \"{}\".".format(filename))
+            print(CRED + "[ ERROR ]" + CEND + " ghost log open error")
+            return
+        
+        file.seek(0, os.SEEK_END)
+        last_line = ""    
+
         try:
             await asyncio.sleep(sleep_time)
             lines = file.readlines()
