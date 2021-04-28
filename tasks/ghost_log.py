@@ -93,9 +93,10 @@ async def file_tail(bot, config, sleep_time):
                                                     if not "[Local]" in line:
                                                         if not "WHISPER" in line:
                                                             if not "from account" in line:
-                                                                if last_line != line:
-                                                                    last_line = line
-                                                                    lines_to_print.append(line)
+                                                                if not "TCPSOCKET" in line:
+                                                                    if last_line != line:
+                                                                        last_line = line
+                                                                        lines_to_print.append(line)
                 # replay_file = line
 
                     if "Online" in line:
