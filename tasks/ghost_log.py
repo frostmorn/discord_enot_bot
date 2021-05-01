@@ -60,7 +60,7 @@ async def file_tail(bot, config, sleep_time):
     print("Tailing {} every {} seconds.".format(filename, sleep_time))
     while not bot.is_closed():
         await bot.wait_until_ready()
-        flood_channel = bot.get_channel(config["channels"]["flood"])
+        map_debug = bot.get_channel(config["channels"]["mapdebug"])
         log_channel = bot.get_channel(config["channels"]["log"])
         bugs_and_replays_channel = bot.get_channel(config["channels"]["bugs_and_replays"])
         try:
@@ -80,6 +80,7 @@ async def file_tail(bot, config, sleep_time):
             print("Encountered unknown character in server log, skipping lines.")
         else:
             lines_to_print = []
+            map_debug_lines = []
             for line in lines:    # Not EOF
                 try:
                     if not "joining channel" in line:
@@ -94,9 +95,15 @@ async def file_tail(bot, config, sleep_time):
                                                         if not "WHISPER" in line:
                                                             if not "from account" in line:
                                                                 if not "TCPSOCKET" in line:
-                                                                    if last_line != line:
-                                                                        last_line = line
-                                                                        lines_to_print.append(line)
+                                                                    if not "MAPDEBUG" in line:
+                                                                        if last_line != line:
+                                                                            last_line = line
+                                                                            lines_to_print.append(line)
+                                                                    else:
+                                                                        if last_line !=line:
+                                                                            last_line = line
+                                                                            map_debug_lines.append(line)
+                                                                    
                 # replay_file = line
 
                     if "Online" in line:
@@ -106,17 +113,6 @@ async def file_tail(bot, config, sleep_time):
                         print("Replay file created")
                         replay_file = line.split("[")[3].replace("]", "").replace("\n", "").replace("\r", "")
                         await bugs_and_replays_channel.send(file=discord.File(replay_file))
-                        # replay_file = 
-
-                        # embed = discord.Embed(title="Players APM:  "+replay_file, colour=discord.Colour(0x000000))
-                        # apm_data = get_apm_data(replay_file)
-                        # print(apm_data)
-                        # for apm_element in apm_data:
-                        #     embed.add_field(name=apm_element["player"], value=str(apm_element["apm"]))
-                            
-                        # await bugs_and_replays_channel.send(embed=embed)
-                        # TGHISDASD ASD TODO: MAKE THAT WORK
-                        # await bugs_and_replays_channel.send(get_apm_message(replay_file), file=discord.File(filename=replay_file, "Replay.w3g"))
 
                 except:
                     asyncio.sleep(0.5)
@@ -133,7 +129,22 @@ async def file_tail(bot, config, sleep_time):
             for message in messages_to_send:
                 if message !="":
                     await log_channel.send(monospace(message))
-                        
+
+            messages_to_send = ["",]
+            current_message = 0
+
+            if len(map_debug_lines)> 0:
+                for line in map_debug_lines:
+                    if len(messages_to_send[current_message]) +len(line)+1> 1800:
+                        messages_to_send.append("")
+                        current_message = current_message +1
+                    messages_to_send[current_message] =  messages_to_send[current_message] + line+ "\n"
+            
+            for message in messages_to_send:
+                if message !="":
+                    await map_debug.send(monospace(message))
+
+
             await asyncio.sleep(sleep_time)
 
         
